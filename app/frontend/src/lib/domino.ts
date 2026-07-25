@@ -1,4 +1,4 @@
-export const MAX_COLOR = 9 
+export const MAX_COLOR = 9
 
 export function dominoColor(c: number): string {
   return `var(--color-domino-${c})`
