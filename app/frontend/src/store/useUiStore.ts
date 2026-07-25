@@ -1,4 +1,4 @@
-import { create } from "zustand" 
+import { create } from "zustand"
 
 export type ViewMode = "2d" | "3d"
 export type CameraPreset = "top" | "south" | "east" | "iso"
