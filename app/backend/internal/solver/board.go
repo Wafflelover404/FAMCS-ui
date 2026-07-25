@@ -1,4 +1,4 @@
-package solver 
+package solver
 
 import (
 	"encoding/binary"
