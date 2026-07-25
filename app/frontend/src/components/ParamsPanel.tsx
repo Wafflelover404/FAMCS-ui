@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react" 
+import { useEffect, useState } from "react"
 import { useBoardStore } from "../store/useBoardStore"
 import { useSolveStore } from "../store/useSolveStore"
 import * as api from "../lib/api"
