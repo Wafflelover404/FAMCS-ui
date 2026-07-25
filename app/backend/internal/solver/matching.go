@@ -1,4 +1,4 @@
-package solver 
+package solver
 
 var (
 	dRow = [4]int{0, 0, 1, -1}
