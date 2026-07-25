@@ -1,4 +1,4 @@
-import { useBoardStore } from "../store/useBoardStore" 
+import { useBoardStore } from "../store/useBoardStore"
 import { useUiStore } from "../store/useUiStore"
 import { dominoColor } from "../lib/domino"
 import { moveVisibility } from "../lib/geometry"
