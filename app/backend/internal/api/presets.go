@@ -1,4 +1,4 @@
-package api 
+package api
 
 func builtinPresets() []Preset {
 	return []Preset{
