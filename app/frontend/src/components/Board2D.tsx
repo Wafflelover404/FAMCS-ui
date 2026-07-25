@@ -1,4 +1,4 @@
-import { useRef, useState } from "react" 
+import { useRef, useState } from "react"
 import { useBoardStore } from "../store/useBoardStore"
 import { useSolveStore } from "../store/useSolveStore"
 import { useUiStore } from "../store/useUiStore"
