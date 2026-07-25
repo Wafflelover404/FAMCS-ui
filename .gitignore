@@ -1,0 +1,25 @@
+# planning doc — never committed
+plan.md
+
+# Go
+app/backend/bin/
+app/backend/overlap
+app/backend/api
+*.test
+
+# Node / frontend
+app/frontend/node_modules/
+app/frontend/dist/
+node_modules/
+
+# Editors / OS
+.DS_Store
+.vscode/
+*.swp
+
+# Env
+.env
+.env.local
+
+# Claude Code local settings
+.claude/settings.local.json
