@@ -1,0 +1,118 @@
+@import "tailwindcss"; 
+
+@theme {
+  --font-display: "Unbounded", system-ui, sans-serif;
+  --font-sans: "Commissioner", system-ui, sans-serif;
+  --font-mono: "PT Mono", ui-monospace, monospace;
+}
+
+:root {
+  --color-domino-1: oklch(0.62 0.19 25);
+  --color-domino-2: oklch(0.66 0.17 60);
+  --color-domino-3: oklch(0.76 0.15 95);
+  --color-domino-4: oklch(0.68 0.16 145);
+  --color-domino-5: oklch(0.7 0.11 185);
+  --color-domino-6: oklch(0.7 0.13 225);
+  --color-domino-7: oklch(0.58 0.19 265);
+  --color-domino-8: oklch(0.56 0.21 305);
+  --color-domino-9: oklch(0.62 0.23 345);
+
+  --color-bg: #0e1319;
+  --color-surface: #151c24;
+  --color-raised: #1d262f;
+  --color-rule: #2a3540;
+  --color-ink: #e4eaf0;
+  --color-muted: #8494a4;
+  --color-ok: #5fb98a;
+  --color-fail: #d3807c;
+  --color-warn: #c4ab5f;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --color-bg: #eef1f4;
+  --color-surface: #f7f9fb;
+  --color-raised: #ffffff;
+  --color-rule: #d3dae1;
+  --color-ink: #131a21;
+  --color-muted: #5a6b7a;
+  --color-ok: #3e8a63;
+  --color-fail: #a8534f;
+  --color-warn: #8a7a3e;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-bg: #eef1f4;
+    --color-surface: #f7f9fb;
+    --color-raised: #ffffff;
+    --color-rule: #d3dae1;
+    --color-ink: #131a21;
+    --color-muted: #5a6b7a;
+    --color-ok: #3e8a63;
+    --color-fail: #a8534f;
+    --color-warn: #8a7a3e;
+    color-scheme: light;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-ink);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
