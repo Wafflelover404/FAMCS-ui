@@ -1,4 +1,4 @@
-module famcs-ui/backend 
+module famcs-ui/backend
 
 go 1.26.6
 
