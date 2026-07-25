@@ -1,4 +1,4 @@
-import { create } from "zustand" 
+import { create } from "zustand"
 import type { Mode, Move, Preset } from "../lib/types"
 
 interface HistoryEntry {
