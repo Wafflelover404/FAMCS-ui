@@ -1,4 +1,4 @@
-import { ParamsPanel } from "./ParamsPanel" 
+import { ParamsPanel } from "./ParamsPanel"
 import { Board2D } from "./Board2D"
 import { Board3D } from "./Board3D"
 import { AnalysisPanel } from "./AnalysisPanel"
