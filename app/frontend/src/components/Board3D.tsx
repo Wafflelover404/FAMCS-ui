@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react" 
+import { useMemo, useRef } from "react"
 import { Canvas, useThree } from "@react-three/fiber"
 import { OrbitControls, OrthographicCamera } from "@react-three/drei"
 import * as THREE from "three"
