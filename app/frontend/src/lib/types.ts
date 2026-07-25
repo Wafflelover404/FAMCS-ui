@@ -1,4 +1,4 @@
-export type Orient = "h" | "v" 
+export type Orient = "h" | "v"
 
 export interface Move {
   step: number
