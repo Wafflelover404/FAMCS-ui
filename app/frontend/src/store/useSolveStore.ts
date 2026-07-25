@@ -1,4 +1,4 @@
-import { create } from "zustand" 
+import { create } from "zustand"
 import type { AnalyzeResponse, CountResponse, SolveResponse } from "../lib/types"
 
 interface SolveState {
