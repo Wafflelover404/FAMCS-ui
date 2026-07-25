@@ -1,4 +1,4 @@
-package solver 
+package solver
 
 type cellState int8
 
