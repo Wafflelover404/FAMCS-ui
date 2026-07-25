@@ -1,4 +1,4 @@
-import type { Move } from "./types" 
+import type { Move } from "./types"
 
 export function cellsOfMove(m: Move, n: number): [number, number] {
   const u = m.r * n + m.c
