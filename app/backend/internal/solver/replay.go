@@ -1,4 +1,4 @@
-package solver 
+package solver
 
 func Simulate(n int, moves []Move) *Board {
 	b := NewBoard(n)
