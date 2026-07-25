@@ -1,4 +1,4 @@
-import { useState } from "react" 
+import { useState } from "react"
 import * as api from "../lib/api"
 import type { Mode } from "../lib/types"
 import { dominoColor } from "../lib/domino"
