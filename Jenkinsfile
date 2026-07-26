@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  options {
+    disableConcurrentBuilds()
+  }
+
   environment {
     FRONTEND_PORT = '8082'
     API_PORT = '8090'
@@ -21,6 +25,7 @@ pipeline {
     stage('Compose Up') {
       steps {
         dir('app') {
+          sh 'docker compose down --remove-orphans || true'
           sh 'docker compose up -d --build'
         }
       }
@@ -52,7 +57,7 @@ pipeline {
   post {
     always {
       dir('app') {
-        sh 'docker compose down'
+        sh 'docker compose down --remove-orphans'
       }
     }
   }
