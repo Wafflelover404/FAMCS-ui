@@ -3,6 +3,10 @@ pipeline {
 
   environment {
     FRONTEND_PORT = '8082'
+    API_PORT = '8090'
+    POSTGRES_PORT = '5433'
+    REDIS_PORT = '6380'
+    KAFKA_PORT = '9093'
   }
 
   stages {
