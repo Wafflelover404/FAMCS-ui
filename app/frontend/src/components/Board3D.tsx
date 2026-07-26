@@ -95,6 +95,7 @@ function Scene() {
   const ghost = useUiStore((s) => s.ghost)
   const hoveredStep = useUiStore((s) => s.hoveredStep)
   const setHoveredStep = useUiStore((s) => s.setHoveredStep)
+  const playbackStep = useUiStore((s) => s.playbackStep)
   const setPlaybackStep = useUiStore((s) => s.setPlaybackStep)
 
   const gap = 0.55
@@ -104,17 +105,31 @@ function Scene() {
 
   const slabs = useMemo(() => {
     if (moves && moves.length > 0) {
-      return moves.map((m, i) => {
-        const [a] = cellsOfMove(m, n)
-        const r0 = Math.floor(a / n)
-        const c0 = a % n
-        const w = m.orient === "h" ? 2 : 1
-        const d = m.orient === "h" ? 1 : 2
-        const x = c0 + w / 2
-        const z = r0 + d / 2
-        const y = (m.step - 0.5) * gap * explode
-        return { key: `m${m.step}`, x, y, z, w, d, h: gap * 0.85, color: DOMINO_HEX[m.color] ?? "#888", step: m.step, dim: ghost ? false : !visible[i] }
-      })
+      const visibleByStep = new Map(moves.map((m, i) => [m.step, visible[i]]))
+      return moves
+        .filter((m) => m.step <= playbackStep)
+        .map((m) => {
+          const [a] = cellsOfMove(m, n)
+          const r0 = Math.floor(a / n)
+          const c0 = a % n
+          const w = m.orient === "h" ? 2 : 1
+          const d = m.orient === "h" ? 1 : 2
+          const x = c0 + w / 2
+          const z = r0 + d / 2
+          const y = (m.step - 0.5) * gap * explode
+          return {
+            key: `m${m.step}`,
+            x,
+            y,
+            z,
+            w,
+            d,
+            h: gap * 0.85,
+            color: DOMINO_HEX[m.color] ?? "#888",
+            step: m.step,
+            dim: ghost ? false : !visibleByStep.get(m.step),
+          }
+        })
     }
     return cells
       .map((c, i) => ({ c, i }))
@@ -136,7 +151,7 @@ function Scene() {
         }
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moves, cells, n, explode, ghost])
+  }, [moves, cells, n, explode, ghost, playbackStep])
 
   return (
     <group>
