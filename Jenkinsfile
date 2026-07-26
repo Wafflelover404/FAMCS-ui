@@ -10,6 +10,14 @@ pipeline {
   }
 
   stages {
+    stage('Lint') {
+      steps {
+        dir('app/frontend') {
+          sh 'docker run --rm -v "$PWD":/src -w /src node:22-alpine sh -c "npm ci && npm run lint"'
+        }
+      }
+    }
+
     stage('Compose Up') {
       steps {
         dir('app') {
