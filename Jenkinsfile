@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  options {
+    disableConcurrentBuilds()
+  }
+
   environment {
     FRONTEND_PORT = '8082'
     API_PORT = '8090'
@@ -10,9 +14,18 @@ pipeline {
   }
 
   stages {
+    stage('Lint') {
+      steps {
+        dir('app/frontend') {
+          sh 'docker run --rm -v "$PWD":/src -w /src node:22-alpine sh -c "npm ci && npm run lint"'
+        }
+      }
+    }
+
     stage('Compose Up') {
       steps {
         dir('app') {
+          sh "docker ps -q --filter 'publish=${env.FRONTEND_PORT}' | xargs -r docker rm -f"
           sh 'docker compose up -d --build'
         }
       }
@@ -42,9 +55,12 @@ pipeline {
   }
 
   post {
-    always {
+    success {
+      echo "Deployment healthy — stack left running on port ${env.FRONTEND_PORT}"
+    }
+    failure {
       dir('app') {
-        sh 'docker compose down'
+        sh 'docker compose down --remove-orphans || true'
       }
     }
   }
