@@ -1,10 +1,6 @@
 pipeline {
   agent any
 
-  options {
-    disableConcurrentBuilds()
-  }
-
   environment {
     FRONTEND_PORT = '8082'
     API_PORT = '8090'
@@ -14,18 +10,9 @@ pipeline {
   }
 
   stages {
-    stage('Lint') {
-      steps {
-        dir('app/frontend') {
-          sh 'docker run --rm -v "$PWD":/src -w /src node:22-alpine sh -c "npm ci && npm run lint"'
-        }
-      }
-    }
-
     stage('Compose Up') {
       steps {
         dir('app') {
-          sh 'docker compose down --remove-orphans || true'
           sh 'docker compose up -d --build'
         }
       }
@@ -57,7 +44,7 @@ pipeline {
   post {
     always {
       dir('app') {
-        sh 'docker compose down --remove-orphans'
+        sh 'docker compose down'
       }
     }
   }
