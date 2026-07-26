@@ -87,7 +87,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "8081:80"
+      - "${FRONTEND_PORT:-8081}:80"
     depends_on:
       - api
 
